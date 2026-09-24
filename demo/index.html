@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>insales-icons — icon font for InSales storefronts</title>
+    <meta
+      name="description"
+      content="One icon font, three free SVG sources (Bootstrap Icons, Remix Icon, Phosphor). Same class names, same codepoints: .icon-cart, --icon-code-cart."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%234f46e5'/%3E%3Cpath d='M3.5 4h1.2l1 6h5.6l.9-4H5' fill='none' stroke='%23fff' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='6.4' cy='12.2' r='.9' fill='%23fff'/%3E%3Ccircle cx='10.6' cy='12.2' r='.9' fill='%23fff'/%3E%3C/svg%3E"
+    />
+    <script type="module" src="./main.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="28" height="28">
+              <rect width="16" height="16" rx="3" fill="currentColor" />
+              <path
+                d="M3.5 4h1.2l1 6h5.6l.9-4H5"
+                fill="none"
+                stroke="var(--brand-mark-contrast)"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="6.4" cy="12.2" r=".9" fill="var(--brand-mark-contrast)" />
+              <circle cx="10.6" cy="12.2" r=".9" fill="var(--brand-mark-contrast)" />
+            </svg>
+          </span>
+          <div>
+            <h1>insales-icons</h1>
+            <p class="tagline">One icon font, three free SVG sources — same class names, same codepoints.</p>
+          </div>
+        </div>
+        <nav class="set-switcher" role="tablist" aria-label="Icon set"></nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="toolbar" aria-label="Search and preview settings">
+        <label class="search">
+          <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+            <path
+              d="M11.7 10.3a5.5 5.5 0 1 0-1.4 1.4l3 3 1.4-1.4-3-3zM7 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
+              fill="currentColor"
+            />
+          </svg>
+          <input id="search" type="search" placeholder="Search 83 icons…" autocomplete="off" spellcheck="false" />
+        </label>
+        <label class="size-control">
+          <span>Size</span>
+          <input id="size" type="range" min="16" max="64" step="4" value="32" />
+        </label>
+        <output id="count" class="count" for="search"></output>
+      </section>
+
+      <section id="grid" class="grid" aria-label="Icons"></section>
+      <p id="empty" class="empty" hidden>No icons match your search.</p>
+    </main>
+
+    <section class="usage">
+      <div class="container">
+        <h2>Usage</h2>
+        <p>
+          Every generated font keeps the original InSales API: font family
+          <code>insales-icons</code>, classes <code>.icon-*</code> and CSS variables
+          <code>--icon-code-*</code>. Pick a stylesheet, then use the class:
+        </p>
+        <pre class="snippet"><code id="snippet-css"></code></pre>
+        <pre class="snippet"><code id="snippet-html">&lt;i class="icon-cart"&gt;&lt;/i&gt;</code></pre>
+        <pre class="snippet"><code id="snippet-var">/* or read the codepoint from a CSS variable */
+.icon-cart::before {
+  content: var(--icon-code-cart);
+  font-family: "insales-icons";
+}</code></pre>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p id="credits"></p>
+        <p class="fineprint">
+          Generated with Vite + fantasticon · codepoints <code>E800–E852</code> match the original InSales font-generator
+          build · demo fonts are rebuilt on every deploy from the npm-published SVG sources.
+        </p>
+      </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
