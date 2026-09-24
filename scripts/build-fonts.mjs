@@ -20,6 +20,7 @@ import { parseArgs } from 'node:util';
 import { generateFonts } from 'fantasticon';
 
 import { CSS_CLASS, FIRST_CODEPOINT, FONT_NAME, icons, sets } from '../config/icons.mjs';
+import { renderDemoData } from '../templates/demo-data.mjs';
 import { renderCss } from '../templates/style.css.mjs';
 
 const FONT_TYPES = ['eot', 'svg', 'ttf', 'woff', 'woff2'];
@@ -221,7 +222,8 @@ async function main() {
     return;
   }
 
-  const jobs = values.dir?.length ? directoryJobs(values.dir) : manifestJobs();
+  const fromManifest = !values.dir?.length;
+  const jobs = fromManifest ? manifestJobs() : directoryJobs(values.dir);
 
   try {
     console.log(
@@ -231,6 +233,20 @@ async function main() {
     for (const { key, header, sources } of jobs) {
       console.log(`\n▶ ${header}`);
       await buildFont(key, sources);
+    }
+
+    if (fromManifest) {
+      // The static demo reads its data from this classic-script file, so it
+      // keeps working from file:// where ES modules are blocked.
+      fs.writeFileSync(
+        path.join(outputRoot, 'data.js'),
+        renderDemoData({
+          fontName: FONT_NAME,
+          firstCodepoint: FIRST_CODEPOINT,
+          sets: Object.entries(sets).map(([key, set]) => ({ key, ...set })),
+        }),
+      );
+      console.log(`\n  ✓ fonts/data.js (demo page data)`);
     }
 
     console.log(`\n✔ done — every font declares family "${FONT_NAME}" with the same .icon-<name> API.`);
