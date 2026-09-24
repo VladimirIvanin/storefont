@@ -5,14 +5,14 @@
  * @param {object} options
  * @param {string} options.fontName  font-family shared by every set
  * @param {number} options.firstCodepoint  codepoint of the first glyph
- * @param {Array<{key: string, label: string, packageName: string, license: string, icons: string[]}>} options.sets
+ * @param {Array<{key: string, label: string, package: string, license: string, icons: string[]}>} options.sets
  * @returns {string} JavaScript contents
  */
 export function renderDemoData({ fontName, firstCodepoint, sets }) {
   const data = {
     fontName,
     firstCodepoint,
-    sets: sets.map(({ key, label, packageName, license, icons }) => ({
+    sets: sets.map(({ key, label, package: packageName, license, icons }) => ({
       key,
       label,
       package: packageName,

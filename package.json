@@ -1,7 +1,7 @@
 {
   "name": "storefont",
   "version": "1.0.0",
-  "description": "InSales icon fonts (insales-icons) generated from 3 free SVG icon sets, with a Vite demo for GitHub Pages",
+  "description": "InSales icon fonts (insales-icons) generated from 3 free SVG icon sets, with a static demo for GitHub Pages",
   "type": "module",
   "private": true,
   "license": "MIT",
@@ -10,10 +10,7 @@
   },
   "scripts": {
     "fonts": "node scripts/build-fonts.mjs",
-    "dev": "vite",
-    "build": "npm run fonts && vite build",
-    "build:site": "vite build",
-    "preview": "vite preview",
+    "dev": "node scripts/serve.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -24,8 +21,6 @@
     "eslint": "^10.11.0",
     "fantasticon": "^4.1.0",
     "globals": "^17.12.0",
-    "remixicon": "^4.9.1",
-    "vite": "^8.3.0",
-    "vite-plugin-singlefile": "^2.3.3"
+    "remixicon": "^4.9.1"
   }
 }

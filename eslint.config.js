@@ -3,8 +3,8 @@ import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
 
 export default defineConfig([
-  // build output and generated fonts are never linted
-  globalIgnores(['dist/**', 'public/fonts/**', '.font-build/**']),
+  // build artifacts and generated fonts are never linted
+  globalIgnores(['.font-build/**']),
   js.configs.recommended,
   {
     files: ['**/*.js', '**/*.mjs'],

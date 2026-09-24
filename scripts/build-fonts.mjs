@@ -243,7 +243,13 @@ async function main() {
         renderDemoData({
           fontName: FONT_NAME,
           firstCodepoint: FIRST_CODEPOINT,
-          sets: Object.entries(sets).map(([key, set]) => ({ key, ...set })),
+          sets: Object.entries(sets).map(([key, set]) => ({
+            key,
+            label: set.label,
+            package: set.package,
+            license: set.license,
+            icons,
+          })),
         }),
       );
       console.log(`\n  ✓ fonts/data.js (demo page data)`);
